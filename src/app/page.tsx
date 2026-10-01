@@ -21,15 +21,15 @@ export default function Home() {
         const homeBottom = document.querySelector('.home-bottom');
         if (homeBottom) {
           const lineRect = homeBottom.getBoundingClientRect();
-          const overlayHeight = overlay.offsetHeight;
-          overlay.style.top = (lineRect.top - overlayHeight - 25) + 'px';
+          const overlayHeight = overlay!.offsetHeight;
+          overlay!.style.top = (lineRect.top - overlayHeight - 25) + 'px';
         } else {
-          overlay.style.top = rect.top + 'px';
+          overlay!.style.top = rect.top + 'px';
         }
-        overlay.style.left = rect.left + 'px';
-        overlay.style.opacity = '1';
+        overlay!.style.left = rect.left + 'px';
+        overlay!.style.opacity = '1';
       } else {
-        overlay.style.opacity = '0';
+        overlay!.style.opacity = '0';
       }
     }
 
@@ -37,7 +37,7 @@ export default function Home() {
     function tryPosition() {
       positionOverlay();
       tries++;
-      if ((!document.querySelector('.home-top') || overlay.style.opacity === '0') && tries < 100) {
+      if ((!document.querySelector('.home-top') || overlay!.style.opacity === '0') && tries < 100) {
         requestAnimationFrame(tryPosition);
       }
     }
@@ -55,7 +55,7 @@ export default function Home() {
       if (!hasNavigated) return;
       const path = window.location.pathname + window.location.hash;
       const isHomepage = path.indexOf('homepage') !== -1;
-      overlay.style.display = isHomepage ? 'block' : 'none';
+      overlay!.style.display = isHomepage ? 'block' : 'none';
       if (isHomepage) positionOverlay();
     }
 
